@@ -82,8 +82,8 @@ Each of the three directories contains a `kustomization.yaml` file that will app
    - edit the `example-multiclusterhub-cr.yaml` file in the `mulitclusterhub` dir
      - set `ocpHost` to your clustername.basedomain name
      ```bash
-     # clustername.basedomain in terraform.tfvars.json or run the following:
-     oc -n openshift-console get routes console -o jsonpath='{.status.ingress[0].routerCanonicalHostname}'
+     # clustername.basedomain in terraform.tfvars.json, install-config.yaml basedomain, or run the following:
+     oc -n openshift-console get routes console -o jsonpath='{.status.ingress[0].routerCanonicalHostname}' | sed "s/apps.//"
      ```
      - set `imageTagSuffix` to the snapshot value used in the `kustomization.yaml` file in the `multiclusterhub-operator` dir above<br>_**Note:** Make sure to remove the VERSION 1.0.0-, from the newTag value taken from kustomization.yaml**_
   ```bash
